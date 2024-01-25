@@ -26,7 +26,11 @@ yarn-error.log*
 
 # local env files
 .env*.local
-
+.flaskenv
+.venv
+.vscode/
+*.debug
+instance/
 # vercel
 .vercel
 
