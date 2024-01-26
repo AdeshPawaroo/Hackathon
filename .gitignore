@@ -31,6 +31,10 @@ yarn-error.log*
 .vscode/
 *.debug
 instance/
+
+#database
+migrations
+
 # vercel
 .vercel
 
