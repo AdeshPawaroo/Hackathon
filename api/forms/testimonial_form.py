@@ -10,4 +10,3 @@ class TestimonialForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired()])
     photos = StringField('Photos')
     videos = StringField('Videos')
-    created_at = DateTimeField('Created At', format='%Y-%m-%dT%H:%M:%S', validators=[DataRequired()])
