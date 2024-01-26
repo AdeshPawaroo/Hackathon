@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Email
 
 class TestimonialForm(FlaskForm):
     testimonial_name = StringField('Testimonial Name', validators=[DataRequired()])
-    testimonial_email_id = StringField('Testimonial Email', validators=[DataRequired(), Email()])
+    testimonial_email_id = StringField('Testimonial Email', validators=[DataRequired()])
     testimonial_location = StringField('Testimonial Location', validators=[DataRequired()])
     phone_number = IntegerField('Phone Number')
     description = TextAreaField('Description', validators=[DataRequired()])

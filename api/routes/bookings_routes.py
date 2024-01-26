@@ -19,15 +19,16 @@ def create_booking():
     """
     Create a new booking
     """
-    form = BookingForm(request.form)
+    form = BookingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
+    print(request.get_json())
     if form.validate():
         booking = Booking(
             name=form.name.data,
             email_id=form.email_id.data,
             add_guest=form.add_guest.data,
             special_notes=form.special_notes.data,
-            created_at=form.created_at.data
         )
 
         db.session.add(booking)

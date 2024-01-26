@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from datetime import datetime
 
 
 class Booking(db.Model):
@@ -14,7 +14,8 @@ class Booking(db.Model):
     email_id = db.Column(db.String(255), nullable=False)
     add_guest = db.Column(db.String(255))
     special_notes = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
 
     def to_dict(self):
         return {

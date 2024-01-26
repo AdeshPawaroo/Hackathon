@@ -7,4 +7,3 @@ class BookingForm(FlaskForm):
     email_id = StringField('Email', validators=[DataRequired()])
     add_guest = StringField('Additional Guest')
     special_notes = TextAreaField('Special Notes')
-    created_at = DateTimeField('Created At', format='%Y-%m-%dT%H:%M:%S', validators=[DataRequired()])
