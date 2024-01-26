@@ -4,10 +4,14 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from models import db
 from config import Config
+from routes import bookings_routes, testimonials_routes
 
 app.config.from_object(Config)
 
 # register blue prints here
+app.register_blueprint(bookings_routes, url_prefix='/api/bookings')
+app.register_blueprint(testimonials_routes, url_prefix='/api/testimonials')
+
 
 db.init_app(app)
 Migrate(app, db)
