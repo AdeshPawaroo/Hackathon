@@ -3,7 +3,6 @@ from wtforms import StringField, IntegerField, TextAreaField, DateTimeField
 from wtforms.validators import DataRequired, Email
 
 class BookingForm(FlaskForm):
-    customer_id = IntegerField('Customer ID', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
     email_id = StringField('Email', validators=[DataRequired(), Email()])
     add_guest = StringField('Additional Guest')

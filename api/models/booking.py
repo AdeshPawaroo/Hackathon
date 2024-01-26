@@ -9,8 +9,7 @@ class Booking(db.Model):
             __table_args__ = {'schema': SCHEMA}
 
 
-    id = db.Column(db.Integer, primary_key=True)
-    customer_id = db.Column(db.Integer, nullable=False)
+    booking_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     email_id = db.Column(db.String(255), nullable=False)
     add_guest = db.Column(db.String(255))
@@ -20,7 +19,7 @@ class Booking(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'customer_id': self.customer_id,
+            'booking_id': self.booking_id,
             'name': self.name,
             'email_id': self.email_id,
             'add_guest': self.add_guest,
