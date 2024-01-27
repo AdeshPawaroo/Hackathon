@@ -11,3 +11,4 @@ def testimonials():
     """
     testimonials = Testimonial.query.all()
     return {'testimonials': [testimonial.to_dict() for testimonial in testimonials]}
+ 
