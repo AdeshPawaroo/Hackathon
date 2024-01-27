@@ -5,6 +5,9 @@ from flask_migrate import Migrate
 from models import db
 from config import Config
 from routes import bookings_routes, testimonials_routes
+from seeds import seed_commands
+
+app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 

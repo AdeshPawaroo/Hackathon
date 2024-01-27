@@ -8,8 +8,7 @@ class Testimonial(db.Model):
             __table_args__ = {'schema': SCHEMA}
 
 
-    id = db.Column(db.Integer, primary_key=True)
-    testimonial_id = db.Column(db.Integer, nullable=False)
+    testimonial_id = db.Column(db.Integer, primary_key=True)
     testimonial_name = db.Column(db.String(255), nullable=False)
     testimonial_email_id = db.Column(db.String(255), nullable=False)
     testimonial_location = db.Column(db.String(255), nullable=False)
@@ -21,7 +20,6 @@ class Testimonial(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
             'testimonial_id': self.testimonial_id,
             'testimonial_name': self.testimonial_name,
             'testimonial_email_id': self.testimonial_email_id,
