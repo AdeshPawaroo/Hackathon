@@ -18,7 +18,6 @@ class Booking(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
             'booking_id': self.booking_id,
             'name': self.name,
             'email_id': self.email_id,
