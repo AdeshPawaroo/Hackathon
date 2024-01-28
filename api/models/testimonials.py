@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-
+from datetime import datetime
 
 class Testimonial(db.Model):
     __tablename__ = 'testimonials'
@@ -16,7 +16,7 @@ class Testimonial(db.Model):
     description = db.Column(db.String(255), nullable=False)
     photos = db.Column(db.String(255))
     videos = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def to_dict(self):
         return {
