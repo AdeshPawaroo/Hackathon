@@ -6,7 +6,7 @@ from models import db
 from config import Config
 from routes import bookings_routes, testimonials_routes
 from seeds import seed_commands
-
+ 
 app = Flask(__name__)
 app.cli.add_command(seed_commands)
 
