@@ -4,6 +4,7 @@ import React from 'react';
 import Logo from './Logo'; // Assuming you have a Logo component
 import MenuItem from './MenuItem'; // Assuming you have a MenuItem component
 import Button from './Button'; // Your button component
+import { usePathname } from 'next/navigation';
 
 const Navbar: React.FC = () => {
     const handleButtonClick = () => {
@@ -12,7 +13,8 @@ const Navbar: React.FC = () => {
 
     return (
         <nav className="flex items-center justify-between h-20 px-4 bg-teal-500">
-            <div className="flex items-center">
+            <div className="flex items-center gap-5">
+
                 <Logo />
                 <ul className="flex space-x-8">
                     <MenuItem href="/about" label="About Jada" />
