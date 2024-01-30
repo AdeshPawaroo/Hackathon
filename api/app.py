@@ -19,6 +19,7 @@ app.register_blueprint(bookings_routes, url_prefix='/api/bookings')
 app.register_blueprint(testimonials_routes, url_prefix='/api/testimonials')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(home_page_routes, url_prefix='/api/home_page')
 
 
 db.init_app(app)
