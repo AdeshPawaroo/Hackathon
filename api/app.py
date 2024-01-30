@@ -1,6 +1,7 @@
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
+from flask_login import LoginManager
 from flask_wtf.csrf import generate_csrf
 from models import db
 from config import Config
@@ -11,7 +12,8 @@ app = Flask(__name__)
 app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
-
+login_manager = LoginManager(app)
+login_manager.login_view = 'auth.unauthorized'
 # register blue prints here
 app.register_blueprint(bookings_routes, url_prefix='/api/bookings')
 app.register_blueprint(testimonials_routes, url_prefix='/api/testimonials')
