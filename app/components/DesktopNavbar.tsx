@@ -15,10 +15,10 @@ const menuItems = [
 ];
 
 const DesktopNavbar: React.FC = () => {
-    // const handleButtonClick = () => {
-    //     // Handle the Book Jada button click
-    //     alert('Book Jada clicked'); // Replace with your actual click handling logic
-    // };
+    const handleButtonClick = () => {
+        // Handle the Book Jada button click
+        alert('Book Jada clicked'); // Replace with your actual click handling logic
+    };
 
     return (
         <nav className="hidden md:flex bg-jada-cyan px-4 sm:px-6 lg:px-8 items-center justify-between h-20">
@@ -31,11 +31,7 @@ const DesktopNavbar: React.FC = () => {
                 </ul>
             </div>
 
-            {/* <Button
-            onClick={handleButtonClick}
-            text="Book Jada"
-        >
-        </Button> */}
+            <Button text="Book Jada" onClick={handleButtonClick} />
         </nav>
     );
 };
