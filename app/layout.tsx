@@ -16,11 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-        <div className='container-full mx-auto'>
+      <body className={`${inter.className} antialiased container-full mx-auto`}>
           <Header />
           {children}
-        </div>
       </body>
     </html>
   )
