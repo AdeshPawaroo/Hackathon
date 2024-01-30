@@ -5,7 +5,7 @@ from flask_login import LoginManager
 from flask_wtf.csrf import generate_csrf
 from models import db
 from config import Config
-from routes import bookings_routes, testimonials_routes, user_routes, auth_routes
+from routes import bookings_routes, testimonials_routes, user_routes, auth_routes, home_page_routes
 from seeds import seed_commands
 
 app = Flask(__name__)
