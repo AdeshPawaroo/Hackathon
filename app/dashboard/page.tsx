@@ -64,15 +64,7 @@ export default function DashboardPage() {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-md">
-        <nav className="flex flex-col p-4">
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Home</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">About</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Services</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Resources</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Testimonials</a>
-        </nav>
-      </div>
+      
 
       {/* Main Content */}
       <div className="flex-1 p-10">
