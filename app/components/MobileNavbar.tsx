@@ -26,7 +26,7 @@ const MobileNavbar: React.FC = () => {
 
       <div
         className={`absolute ${
-          isMenuOpen ? 'top-[7%]' : ''
+          isMenuOpen ? 'top-[6%]' : ''
         } transition-top duration-500 ease-in-out px-3 py-3  w-full left-0 min-h-[25vh] top-[-100%] bg-jada-cyan`}
       >
         <ul className='flex flex-col gap-10 text-jada-purple'>
