@@ -21,14 +21,13 @@ export default function RootLayout({
 }) {
   const pathname = usePathname()
 
-
   return (
     <Context>
       <html lang='en'>
         <body
           className={`${inter.className} antialiased container-full mx-auto`}
         >
-          {pathname !== '/dashboard' && <Navbar />}
+          {!pathname.startsWith('/dashboard') && <Navbar />}
           {children}
         </body>
       </html>
