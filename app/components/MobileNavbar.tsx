@@ -41,8 +41,8 @@ const MobileNavbar: React.FC = () => {
         </ul>
       </div>
 
-      <div>
-        <button className='text-jada-purple z-10'>
+      <div className='z-50'>
+        <button className='text-jada-purple'>
           {isMenuOpen ? (
             <IoCloseOutline
               className='cursor-pointer  md:hidden'
@@ -50,7 +50,7 @@ const MobileNavbar: React.FC = () => {
             />
           ) : (
             <FaBars
-              className=' cursor-pointer md:hidden z-10'
+              className=' cursor-pointer md:hidden'
               onClick={toggleMenu}
             />
           )}
