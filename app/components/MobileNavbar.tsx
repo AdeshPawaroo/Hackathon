@@ -19,6 +19,9 @@ const MobileNavbar: React.FC = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
 
   return (
     <nav className='md:hidden bg-jada-cyan px-4 flex items-center justify-between h-20'>
@@ -26,12 +29,14 @@ const MobileNavbar: React.FC = () => {
 
       <div
         className={`absolute ${
-          isMenuOpen ? 'top-[6%]' : ''
+          isMenuOpen ? 'top-[7%]' : ''
         } transition-top duration-500 ease-in-out px-3 py-3  w-full left-0 min-h-[25vh] top-[-100%] bg-jada-cyan`}
       >
         <ul className='flex flex-col gap-10 text-jada-purple'>
           {menuItems.map((item) => (
-            <MenuItem key={item.href} href={item.href} label={item.label} />
+            <div onClick={closeMenu}>
+              <MenuItem key={item.href} href={item.href} label={item.label} />
+            </div>
           ))}
         </ul>
       </div>
@@ -45,7 +50,7 @@ const MobileNavbar: React.FC = () => {
             />
           ) : (
             <FaBars
-              className=' cursor-pointer md:hidden'
+              className=' cursor-pointer md:hidden z-10'
               onClick={toggleMenu}
             />
           )}
