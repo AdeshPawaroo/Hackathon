@@ -20,15 +20,17 @@ const DesktopNavbar: React.FC = () => {
   }
 
   return (
-    <nav className='hidden md:flex bg-jada-cyan px-4 sm:px-6 lg:px-8 items-center justify-between h-20'>
-      <div className='flex items-center'>
+    <nav className='hidden md:flex md:flex-row bg-jada-cyan px-4 sm:px-6 lg:px-8 items-center md:justify-between h-20'>
+      <div className='gap-5 flex flex-row items-center'>
+
         <Logo src='/Logo-image.png' alt='logo' />
         <ul className='flex space-x-8'>
           {menuItems.map((item) => (
             <MenuItem key={item.href} href={item.href} label={item.label} />
-          ))}
+            ))}
         </ul>
-      </div>
+            </div>
+
 
       <Button text='Book Jada' onClick={handleButtonClick} />
     </nav>

@@ -4,7 +4,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Context from './components/Context/context'
-import { usePathname } from 'next/navigation'
+import { usePathname} from 'next/navigation'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+
+
   return (
     <Context>
       <html lang='en'>
         <body
           className={`${inter.className} antialiased container-full mx-auto`}
         >
-          {!pathname.includes('/dashboard') && <Navbar />}
+          {pathname !== '/dashboard' && <Navbar />}
           {children}
         </body>
       </html>
