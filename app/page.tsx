@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 export default function Page() {
   const pathname = usePathname();
   return (
-    <main className="bg-jada-cyan min-h-screen p-8">
+    <main className=" min-h-screen p-8">
      {pathname === '/' && (
         <HeroCard
           imageUrl="/path-to-image.jpg"
