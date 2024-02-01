@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import Button from '../components/Button'
+import Sidebar from './components/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,28 +18,14 @@ export default function Layout({
 
 
     return (
-
-        <div
-            className={`${inter.className} antialiased container-full mx-auto flex`}
-        >
-            <div className="w-64 bg-white shadow-md flex flex-col justify-between">
-                <nav className="flex flex-col p-4">
-                    <Link href={'/dashboard'}>
-                        <span className='py-2 text-gray-700 hover:text-gray-900'>Hero Card</span>
-                    </Link>
-                    <Link href={'/dashboard/about'}  className="py-2 text-gray-700 hover:text-gray-900">About</Link>
-                    <Link href={'/dashboard/services'}  className="py-2 text-gray-700 hover:text-gray-900">Services</Link>
-                    <Link href={'/dashboard/resources'}  className="py-2 text-gray-700 hover:text-gray-900">Resources</Link>
-                    <Link href={'/dashboard/testimonials'}  className="py-2 text-gray-700 hover:text-gray-900">Testimonials</Link>
-                </nav><div className='p-4'>
-
-                    <Link href={'/'} >
-                        <Button text='Home Page'></Button>
-                    </Link>
-                </div>
-            </div>
-            {children}
+        <div className={`${inter.className} antialiased container-full mx-auto flex`}>
+        <div className="w-64"> {/* Set fixed width for sidebar */}
+          <Sidebar />
         </div>
-
-    )
+        <div className="flex-1"> {/* Main content takes up the remaining space */}
+          {children}
+        </div>
+      </div>
+      
+      );
 }
