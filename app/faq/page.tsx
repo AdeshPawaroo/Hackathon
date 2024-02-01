@@ -1,4 +1,6 @@
 import React from 'react';
+import FAQQuestion from '../components/FAQQuestion';
+import FAQAnswer from '../components/FAQAnswer';
 
 const faqs = [
     {
@@ -42,16 +44,16 @@ const faqs = [
 
 export default function FAQPage() {
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h1>
-            <div>
-                {faqs.map((faq, index) => (
-                    <div key={index} className="mb-6">
-                        <h2 className="text-xl font-semibold mb-2">{faq.question}</h2>
-                        <p>{faq.answer}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
+      <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h1>
+      <div>
+          {faqs.map((faq, index) => (
+              <div key={index} className="mb-6">
+                  <FAQQuestion question={faq.question} />
+                  <FAQAnswer answer={faq.answer} />
+              </div>
+          ))}
+      </div>
+  </div>
     );
 }
