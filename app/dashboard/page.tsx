@@ -1,5 +1,5 @@
 "use client"
-import { useContext, useEffect, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react"
 import { MessageData } from "../components/Context/context"
 import Button from "../components/Button"
 export default function DashboardPage() {
@@ -11,10 +11,12 @@ export default function DashboardPage() {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    async function fetchData(params: any) {
+    async function fetchData() {
       const response = await fetch('/api/home_page')
       const data = await response.json();
-      console.log("Output", data.home_page[0]);
+      // console.log("Output", data.home_page[0]);
+      // @ts-ignore: Suppress the warning for the next line
+
       setMessage(data.home_page[0])
 
     }
@@ -53,18 +55,19 @@ export default function DashboardPage() {
   }
   console.log("Message", message)
 
-  const changeValues = (e) => {
+  const changeValues = (e : ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const updatedMessage = {
       ...message,
       [e.target.name]: e.target.value,
     };
+    // @ts-ignore: Suppress the warning for the next line
     setMessage(updatedMessage);
   }
 
   return (
     <div className="flex h-screen bg-gray-100">
-    
-      
+
+
 
       {/* Main Content */}
       <div className="flex-1 p-10">
