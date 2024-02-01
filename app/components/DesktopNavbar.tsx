@@ -4,20 +4,24 @@ import Logo from './Logo' // Your Logo component
 import MenuItem from './MenuItem' // Your MenuItem component
 import Button from './Button' // Your Button component
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const menuItems = [
   { href: '/about', label: 'About Jada' },
   { href: '/services', label: 'Services' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/booking', label: 'Book Jada' },
+  // { href: '/booking', label: 'Book Jada' },
+  { href: '/testimonials', label: 'Testimonials' },
   { href: '/resources', label: 'Resources' },
   { href: '/contact', label: 'Contact' },
 ]
 
 const DesktopNavbar: React.FC = () => {
-  const handleButtonClick = () => {
-    // Handle the Book Jada button click
-    alert('Book Jada clicked') // Replace with your actual click handling logic
+  const router = useRouter();
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    router.push('/booking')
   }
 
   return (
@@ -31,7 +35,6 @@ const DesktopNavbar: React.FC = () => {
             ))}
         </ul>
             </div>
-
 
       <Button text='Book Jada' onClick={handleButtonClick} />
     </nav>

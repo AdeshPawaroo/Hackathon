@@ -5,6 +5,7 @@ import Logo from './Logo'
 import MenuItem from './MenuItem'
 import { FaBars } from 'react-icons/fa'
 import { IoCloseOutline } from 'react-icons/io5'
+import { useRouter } from 'next/navigation'
 
 const menuItems = [
   { href: '/about', label: 'About Jada' },
