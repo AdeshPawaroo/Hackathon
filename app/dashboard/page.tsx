@@ -63,12 +63,12 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
+    
       
 
       {/* Main Content */}
       <div className="flex-1 p-10">
-        <h1 className="text-4xl font-bold mb-6">Dashboard</h1>
+        <h1 className="text-4xl font-bold mb-6">Home Page</h1>
         <form onSubmit={handleSubmit}>
           <div className="space-y-6">
             <div>
@@ -96,17 +96,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-// const page = () => {
-
-//     const [user, setUser] = useState()
-
-//     return (
-//         <div className="flex flex-col gap-8">dashboard page
-//             {/* {!user ? <SignUp /> : <Page />} */}
-//             <Login />
-//         </div>
-//     )
-// }
-
-// export default page

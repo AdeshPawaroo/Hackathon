@@ -25,7 +25,7 @@ export default function RootLayout({
     <Context>
       <html lang='en'>
         <body
-          className={`${inter.className} antialiased container-full mx-auto`}
+          className={`${inter.className} antialiased container-full mx-auto bg-jada-cyan`}
         >
           {!pathname.startsWith('/dashboard') && <Navbar />}
           {children}

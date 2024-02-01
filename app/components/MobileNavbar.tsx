@@ -9,7 +9,8 @@ import { IoCloseOutline } from 'react-icons/io5'
 const menuItems = [
   { href: '/about', label: 'About Jada' },
   { href: '/services', label: 'Services' },
-  { href: '/book', label: 'Book Jada' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/booking', label: 'Book Jada' },
   { href: '/resources', label: 'Resources' },
   { href: '/contact', label: 'Contact' },
 ]
