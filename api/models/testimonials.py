@@ -12,7 +12,7 @@ class Testimonial(db.Model):
     testimonial_name = db.Column(db.String(255), nullable=False)
     testimonial_email_id = db.Column(db.String(255), nullable=False)
     testimonial_location = db.Column(db.String(255), nullable=False)
-    phone_number = db.Column(db.Integer)
+    phone_number = db.Column(db.String(255))
     description = db.Column(db.String(255), nullable=False)
     photos = db.Column(db.String(255))
     videos = db.Column(db.String(255))
