@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
           <SidebarItem key={index} href={link.href} label={link.label} />
         ))}
       </nav>
-
+     
     </div>
   );
 };
