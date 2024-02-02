@@ -51,7 +51,7 @@ module.exports = {
           900: '#0D7CB5',
           950: '#0B6A9B', // Custom shade beyond the default scale
         },
-        'jada-cyan':{
+        'jada-green':{
           400: '#F1FCF5',
           500: '#D0F4DE',
           600: '#A3E9BE',
