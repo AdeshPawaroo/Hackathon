@@ -19,10 +19,10 @@ const menuItems = [
 const DesktopNavbar: React.FC = () => {
   const router = useRouter();
 
-  const handleButtonClick = (e) => {
-    e.preventDefault();
-    router.push('/booking')
-  }
+  // const handleButtonClick = (e) => {
+  //   e.preventDefault();
+  //   router.push('/booking')
+  // }
 
   return (
     <nav className='hidden md:flex md:flex-row bg-jada-cyan px-4 sm:px-6 lg:px-8 items-center md:justify-between h-20'>
@@ -36,7 +36,7 @@ const DesktopNavbar: React.FC = () => {
         </ul>
             </div>
 
-      <Button text='Book Jada' onClick={handleButtonClick} />
+      {/* <Button text='Book Jada' onClick={handleButtonClick} /> */}
     </nav>
   )
 }
