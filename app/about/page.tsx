@@ -1,15 +1,26 @@
 import React from 'react';
 import Image from 'next/image';
 
+// const aboutParagraphs = [
+//   "Growing up as an only child with a busy single mom, I understood loneliness and made it my mission to prevent it in as many children as possible. Since receiving my certifications in 2019, I have been dedicated to providing love, guidance, and fun learning experiences to every child and family I work with.",
+//   "I'm not just a nanny; I'm a mentor, a tutor, and a friend. My journey has led me to earn a Registered Behavior Technician certification, allowing me to offer specialized care for children with different needs. My motto is simple: 'You're There for Them, and I'm Here For You.'"
+// ];
+
 const aboutParagraphs = [
-  "Growing up as an only child with a busy single mom, I understood loneliness and made it my mission to prevent it in as many children as possible. Since receiving my certifications in 2019, I have been dedicated to providing love, guidance, and fun learning experiences to every child and family I work with.",
-  "I'm not just a nanny; I'm a mentor, a tutor, and a friend. My journey has led me to earn a Registered Behavior Technician certification, allowing me to offer specialized care for children with different needs. My motto is simple: 'You're There for Them, and I'm Here For You.'"
+    "Growing up as an only child with a busy single mom, I understood loneliness and made it my mission to prevent it in as many children as possible. I have been dedicated to providing love, guidance, and fun learning experiences to every child and family I work with. I'm not just a nanny; I'm a mentor, a tutor, and a friend. My motto is simple: 'You're There for Them, and I'm Here For You.'",
+    ""
+];
+
+const certifications = [
+    'Registered Behavorial Technician',
+    'CPR Certified',
+    'Certified Childcare Nanny'
 ];
 
 
 export default function AboutPage() {
   return (
-      <div className="container mx-auto p-4 flex flex-col md:flex-row items-center">
+      <div className="container mx-auto p-4 flex flex-col md:flex-row items-center text-center border">
           <div className="flex-1">
               <Image
                   src="/flower.jpg" 
@@ -24,6 +35,12 @@ export default function AboutPage() {
               {aboutParagraphs.map((paragraph, index) => (
                   <p key={index} className="mb-2">{paragraph}</p>
               ))}
+          </div>
+          <div className="flex-1 p-4">
+            <h1 className="text-2xl font-bold mb-4">Certifications</h1>
+            {certifications.map((cert, index) => (
+                <p key={index} className="mb-2">{cert}</p>
+            ))}
           </div>
       </div>
   );

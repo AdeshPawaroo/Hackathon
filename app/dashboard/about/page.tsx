@@ -1,11 +1,32 @@
 'use client';
 import React, { useState } from 'react';
 
+const initialCertifications = [
+  'Registered Behavorial Technician',
+  'CPR Certified',
+  'Certified Childcare Nanny'
+];
+
 const AboutPageDashboard = () => {
     const [formData, setFormData] = useState({
         paragraphOne: '',
         paragraphTwo: ''
     });
+
+    const [certifications, setCertifications] = useState(initialCertifications);
+    const [editingCertification, setEditingCertification] = useState(null);
+
+    const handleEdit = (certification) => {
+      //fill in
+    };
+
+    const handleDelete = (certification) => {
+      //fill in
+    };
+
+    const handleSave = (newCertification) => {
+      //fill in
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,9 +43,10 @@ const AboutPageDashboard = () => {
         console.log('Form data submitted:', formData);
     };
 
+    //max-w-3xl
     return (
       <div className="flex h-screen bg-gray-100 p-10">
-      <div className="max-w-3xl w-full space-y-8">
+      <div className="max-w-9xl w-full space-y-8">
         <h1 className="text-4xl font-bold mb-6">About Page</h1>
         <form onSubmit={handleSubmit} className="space-y-6 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
@@ -50,17 +72,27 @@ const AboutPageDashboard = () => {
               rows={4}
             ></textarea>
           </div>
-    
           <button
             type="submit"
-            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative w-3/12 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Submit
           </button>
+          <div>
+            {certifications.map((certification, index) => (
+              <div key={index}>
+                <h2>{certification}</h2>
+                <div>
+                  <button onClick={() => handleEdit(certification)}>Edit</button>
+                  <button onClick={() => handleDelete(certification)}>Delete</button>
+                </div>
+              </div>
+            ))}
+          </div>
         </form>
       </div>
     </div>
-    
+
     );
 };
 
