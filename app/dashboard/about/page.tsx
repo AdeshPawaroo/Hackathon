@@ -1,26 +1,87 @@
-'use client';
-import React, { useState } from 'react';
+"use client"
+import { useContext, useEffect, useState } from "react"
+import { MessageData } from "../../components/Context/context"
 
 const AboutPageDashboard = () => {
-    const [formData, setFormData] = useState({
-        paragraphOne: '',
-        paragraphTwo: ''
-    });
+  const messageContext = useContext(MessageData);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  // Accessing message and setMessage from context
+  const { message, setMessage } = messageContext || {};
+  const [errors, setErrors] = useState([]);
+  const [success, setSuccess] = useState(false)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle the form submission logic here
-        // For example, sending data to a server or updating local state
-        console.log('Form data submitted:', formData);
+  useEffect(() => {
+    async function fetchData(params: any) {
+      const response = await fetch('/api/about_page')
+      const data = await response.json();
+      console.log("Output", data.about_page[0]);
+      setMessage(data.about_page[0])
+
+    }
+
+    fetchData()
+  }, [])
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    // Handle the Book Jada button click
+    event.preventDefault();
+    setSuccess(false)
+    setErrors([])
+    const formData = {};
+
+    try {
+      const response = await fetch("/api/about_page/1", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify({ ...message }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setSuccess(true)
+
+      } else {
+        const errorData = await response.json();
+        setErrors(errorData.errors);
+      }
+    } catch (error) {
+      console.error("An error occurred during signup:", error);
+    }
+
+  }
+  console.log("Message", message)
+
+  const changeValues = (e) => {
+    const updatedMessage = {
+      ...message,
+      [e.target.name]: e.target.value,
     };
+    setMessage(updatedMessage);
+  }
+
+
+    // const [formData, setFormData] = useState({
+    //     paragraphOne: '',
+    //     paragraphTwo: ''
+    // });
+
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData(prevState => ({
+    //         ...prevState,
+    //         [name]: value
+    //     }));
+    // };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     // Handle the form submission logic here
+    //     // For example, sending data to a server or updating local state
+    //     console.log('Form data submitted:', formData);
+    // };
 
     return (
       <div className="flex h-screen bg-gray-100 p-10">
@@ -32,8 +93,8 @@ const AboutPageDashboard = () => {
             <textarea
               id="paragraphOne"
               name="paragraphOne"
-              value={formData.paragraphOne}
-              onChange={handleChange}
+              value={message ? message.first_para : null}
+              onChange={changeValues}
               className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               rows={4}
             ></textarea>
@@ -44,8 +105,8 @@ const AboutPageDashboard = () => {
             <textarea
               id="paragraphTwo"
               name="paragraphTwo"
-              value={formData.paragraphTwo}
-              onChange={handleChange}
+              value={message ? message.second_para : null}
+              onChange={changeValues}
               className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               rows={4}
             ></textarea>
@@ -57,6 +118,7 @@ const AboutPageDashboard = () => {
           >
             Submit
           </button>
+          {success && <p className="text-green-600 font-bold">About Page updated successfully</p>}
         </form>
       </div>
     </div>
