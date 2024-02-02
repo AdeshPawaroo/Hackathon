@@ -9,6 +9,10 @@ const ContactForm: React.FC = () => {
   const TEMPLATE_ID = 'template_service'
   const PUBLIC_ID = 'qmXpZwvVswSAoVVrc'
 
+  const [emailError, setEmailError] = useState<boolean | string>(false)
+  const [nameError, setNameError] = useState<boolean | string>(false)
+  const [messageError, setMessageError] = useState<boolean | string>(false)
+
   const [formData, setFormData] = useState({
     from_name: '',
     reply_to: '',
@@ -23,6 +27,8 @@ const ContactForm: React.FC = () => {
       ...prevState,
       [name]: value,
     }))
+
+
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,46 +36,78 @@ const ContactForm: React.FC = () => {
     // Submit form data
     console.log(formData)
 
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, e.target as HTMLFormElement, PUBLIC_ID)
-      .then(
-        (response) => {
-          console.log('SUCCESS!', response.status, response.text)
-        },
-        (err) => {
-          console.error('FAILED...', err)
-        }
-      )
+    let errors = false
 
-    setFormData({
-      from_name: '',
-      reply_to: '',
-      message: '',
-    })
+    if (!formData.from_name) {
+      setNameError('Name Cannot be Blank')
+      errors = true
+      setTimeout(() => setNameError(false), 1500);
+    } else {
+      setNameError(false)
+    }
+    if (!formData.reply_to){
+      setEmailError('Email Cannot be empty')
+      errors = true
+      setTimeout(() => setEmailError(false), 1500);
+
+    }else{
+      setEmailError(false)
+    }
+    if(!formData.message){
+      setMessageError('Message Cannot be empty')
+      errors = true
+      setTimeout(() => setMessageError(false), 1500);
+    }else{
+      setMessageError(false)
+    }
+
+    if (!errors) {
+      emailjs
+        .sendForm(
+          SERVICE_ID,
+          TEMPLATE_ID,
+          e.target as HTMLFormElement,
+          PUBLIC_ID
+        )
+        .then(
+          (response) => {
+            console.log('SUCCESS!', response.status, response.text)
+          },
+          (err) => {
+            console.error('FAILED...', err)
+          }
+        )
+
+      setFormData({
+        from_name: '',
+        reply_to: '',
+        message: '',
+      })
+    }
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      {nameError && <div className='inline-block text-jada-purple'>{nameError}</div>}
       <TextField
         label='Name'
         name='from_name'
         type='text'
-        required
         value={formData.from_name}
         onChange={handleChange}
       />
+      {emailError && <div className="text-jada-purple">{emailError}</div>}
       <TextField
         label='Email'
         name='reply_to'
         type='email'
-        required
         value={formData.reply_to}
         onChange={handleChange}
       />
+      {messageError && <div className="text-jada-purple">{messageError}</div>}
       <TextAreaField
         label='Message'
         name='message'
-        required
         value={formData.message}
         onChange={handleChange}
       />
