@@ -2,6 +2,7 @@
 
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Context from './components/Context/context'
 import { usePathname} from 'next/navigation'
@@ -9,6 +10,7 @@ import AdminNavbar from './components/AdminNavbar'
 
 
 const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ subsets: ['latin'] })
 
 
 export default function RootLayout({
@@ -25,7 +27,7 @@ export default function RootLayout({
     <Context>
       <html lang='en'>
         <body
-          className={`${inter.className} antialiased container-full mx-auto bg-jada-green-500`}
+          className={`${nunito.className} antialiased container-full mx-auto bg-jada-green-500`}
         >
           {isLoggedIn && <AdminNavbar />}
           {!pathname.startsWith('/dashboard') && <Navbar />}
