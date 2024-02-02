@@ -26,13 +26,13 @@ const MobileNavbar: React.FC = () => {
   }
 
   return (
-    <nav className='md:hidden bg-jada-cyan-500 px-4 flex items-center justify-between h-20'>
+    <nav className='md:hidden bg-jada-green-500 px-4 flex items-center justify-between h-20'>
       <Logo src='/Logo-item.png' alt='logo' />
 
       <div
         className={`absolute ${
           isMenuOpen ? 'top-[7%]' : ''
-        } transition-top duration-500 ease-in-out px-3 py-3  w-full left-0 min-h-[25vh] top-[-100%] bg-jada-cyan-500`}
+        } transition-top duration-500 ease-in-out px-3 py-3  w-full left-0 min-h-[25vh] top-[-100%] bg-jada-green-500`}
       >
         <ul className='flex flex-col gap-10 text-jada-purple'>
           {menuItems.map((item) => (

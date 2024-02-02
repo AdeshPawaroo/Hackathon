@@ -25,7 +25,7 @@ export default function RootLayout({
     <Context>
       <html lang='en'>
         <body
-          className={`${inter.className} antialiased container-full mx-auto bg-jada-cyan-500`}
+          className={`${inter.className} antialiased container-full mx-auto bg-jada-green-500`}
         >
           {isLoggedIn && <AdminNavbar />}
           {!pathname.startsWith('/dashboard') && <Navbar />}

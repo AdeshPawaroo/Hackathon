@@ -60,7 +60,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-jada-cyan-500">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-jada-green-500">
       <div className="w-full max-w-xs">
         <ul>
           {errors.map((error, idx) => (
