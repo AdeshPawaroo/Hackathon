@@ -11,16 +11,16 @@ const AboutPageDashboard = () => {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    async function fetchData(params: any) {
+    async function fetchData(params:any) {
       const response = await fetch('/api/about_page')
       const data = await response.json();
-      console.log("Output", data.about_page[0]);
-      setMessage(data.about_page[0])
-
+      console.log("Output",data);
+      setMessage(data.about_pages[0])  
+  
     }
-
+  
     fetchData()
-  }, [])
+  },[])
 
   const handleSubmit = async (event: React.FormEvent) => {
     // Handle the Book Jada button click
@@ -92,7 +92,7 @@ const AboutPageDashboard = () => {
             <label htmlFor="paragraphOne" className="block text-lg font-medium text-gray-700 mb-2">First Paragraph</label>
             <textarea
               id="paragraphOne"
-              name="paragraphOne"
+              name="first_para"
               value={message ? message.first_para : null}
               onChange={changeValues}
               className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -104,7 +104,7 @@ const AboutPageDashboard = () => {
             <label htmlFor="paragraphTwo" className="block text-lg font-medium text-gray-700 mb-2">Second Paragraph</label>
             <textarea
               id="paragraphTwo"
-              name="paragraphTwo"
+              name="second_para"
               value={message ? message.second_para : null}
               onChange={changeValues}
               className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
