@@ -2,6 +2,8 @@
 'use client'
 import React from 'react';
 import SidebarItem from './SidebarItem';
+import Button from '../../components/Button';
+import { useRouter} from 'next/navigation';
 
 const links = [
   { href: '/dashboard', label: 'Home Page' },
@@ -14,16 +16,29 @@ const links = [
 ];
 
 const Sidebar: React.FC = () => {
+  const handleSignOut = async () => {
+   
+  };
+  
+
   return (
-    <div className="w-64 bg-white shadow-md h-screen flex flex-col">
-      <nav className="flex flex-col p-4 overflow-y-auto">
+    <div className="flex flex-col w-64 bg-white shadow-md h-screen">
+      <nav className="flex-1 p-4 overflow-y-auto">
         {links.map((link, index) => (
           <SidebarItem key={index} href={link.href} label={link.label} />
         ))}
       </nav>
-     
+      {/* Spacer to push the sign-out button to the bottom */}
+      <div className="mt-auto mb-10 px-4 w-full">
+        <Button
+          text="Sign Out"
+          additionalClasses="w-full" 
+          onClick={handleSignOut}
+        />
+      </div>
     </div>
   );
 };
+
 
 export default Sidebar;
