@@ -78,13 +78,14 @@ const AboutPageDashboard = () => {
           >
             Submit
           </button>
-          <div>
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold mb-6">Certifications:</h1>
             {certifications.map((certification, index) => (
-              <div key={index}>
-                <h2>{certification}</h2>
-                <div>
-                  <button onClick={() => handleEdit(certification)}>Edit</button>
-                  <button onClick={() => handleDelete(certification)}>Delete</button>
+              <div key={index} className="bg-white shadow-md rounded px-4 py-3">
+                <h2 className="text-xl font-semibold">{certification}</h2>
+                <div className="flex justify-end space-x-2 mt-2">
+                  <button onClick={() => handleEdit(certification)} className="text-white bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded">Edit</button>
+                  <button onClick={() => handleDelete(certification)} className="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">Delete</button>
                 </div>
               </div>
             ))}
