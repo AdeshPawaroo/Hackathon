@@ -7,9 +7,9 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ href, label }) => {
     return (
-        <li>
+        <li className="hover:bg-jada-blue-500 hover:text-black transition-colors duration-150 rounded">
             <Link href={href}>
-                <span>{label}</span>
+                <span className="block px-3 py-2 text-md font-medium">{label}</span>
             </Link>
         </li>
     );
