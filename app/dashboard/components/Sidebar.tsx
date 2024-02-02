@@ -1,39 +1,29 @@
 
+'use client'
 import React from 'react';
-import Link from 'next/link';
-import Button from '../../components/Button'; // Adjust the import path as needed
+import SidebarItem from './SidebarItem';
+
+const links = [
+  { href: '/dashboard', label: 'Home Page' },
+  { href: '/dashboard/about', label: 'About' },
+  { href: '/dashboard/contact', label: 'Contact' },
+  { href: '/dashboard/services', label: 'Services' },
+  { href: '/dashboard/resources', label: 'Resources' },
+  { href: '/dashboard/faq', label: 'FAQ' },
+  { href: '/dashboard/testimonials', label: 'Testimonials' },
+];
 
 const Sidebar: React.FC = () => {
-    return (
-        <div className="w-64 bg-white shadow-md flex flex-col justify-between">
-          <nav className="flex flex-col p-4">
-            <Link href='/dashboard'>
-              <span className='py-2 text-gray-700 hover:text-gray-900 cursor-pointer'>Home Page</span>
-            </Link>
-            <Link href='/dashboard/about'>
-              <span className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer">About</span>
-            </Link>
-            <Link href='/dashboard/contact'>
-              <span className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer">Contact</span>
-            </Link>
-            <Link href='/dashboard/services'>
-              <span className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer">Services</span>
-            </Link>
-            <Link href='/dashboard/resources'>
-              <span className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer">Resources</span>
-            </Link>
-            <Link href='/dashboard/faq'>
-              <span className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer">FAQ</span>
-            </Link>
-            <Link href='/dashboard/testimonials'>
-              <span className="py-2 text-gray-700 hover:text-gray-900 cursor-pointer">Testimonials</span>
-            </Link>
-          </nav>
-          <div className='p-4'>
-            
-          </div>
-        </div>
-      );
+  return (
+    <div className="w-64 bg-white shadow-md h-screen flex flex-col">
+      <nav className="flex flex-col p-4 overflow-y-auto">
+        {links.map((link, index) => (
+          <SidebarItem key={index} href={link.href} label={link.label} />
+        ))}
+      </nav>
+     
+    </div>
+  );
 };
 
 export default Sidebar;
