@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+button:hover,
+a:hover
+ {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+}
+
 .testimonial-card {
     position: relative;
     padding: 20px;
