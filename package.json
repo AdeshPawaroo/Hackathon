@@ -2,6 +2,7 @@
   "name": "next-flask",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "flask-dev": "cd api  && flask run",
     "next-dev": "next dev",
