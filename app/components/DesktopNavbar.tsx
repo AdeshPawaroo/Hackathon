@@ -4,7 +4,8 @@ import Logo from './Logo' // Your Logo component
 import MenuItem from './MenuItem' // Your MenuItem component
 import Button from './Button' // Your Button component
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
+import clsx from 'clsx'
 
 const menuItems = [
   { href: '/about', label: 'About Jada' },
@@ -18,6 +19,7 @@ const menuItems = [
 
 const DesktopNavbar: React.FC = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const DesktopNavbar: React.FC = () => {
         <Logo src='/Logo-image.png' alt='logo' />
         <ul className='flex space-x-8'>
           {menuItems.map((item) => (
-            <MenuItem key={item.href} href={item.href} label={item.label} />
+            <MenuItem key={item.href} href={item.href} label={item.label} isActive={pathname === item.href} />
             ))}
         </ul>
             </div>
