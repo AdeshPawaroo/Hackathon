@@ -118,6 +118,7 @@ const AboutPageDashboard = () => {
         {/* <h1 className="text-4xl font-bold mb-6">About Page</h1> */}
         <div className="space-y-4">
             <h1 className="text-4xl font-bold mb-6">Certifications:</h1>
+            <button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4">Add new certification</button>
             {/* ADD BUTTON + FORM HERE */}
             {certifications.map((certification, index) => (
               <div key={index} className="bg-white shadow-md rounded px-4 py-3">
