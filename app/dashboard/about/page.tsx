@@ -11,14 +11,14 @@ const AboutPageDashboard = () => {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    async function fetchData(params:any) {
+    async function fetchData() {
       const response = await fetch('/api/about_page')
       const data = await response.json();
       console.log("Output",data);
-      setMessage(data.about_pages[0])  
-  
+      setMessage(data.about_pages[0])
+
     }
-  
+
     fetchData()
   },[])
 
@@ -99,7 +99,7 @@ const AboutPageDashboard = () => {
               rows={4}
             ></textarea>
           </div>
-    
+
           <div className="mb-4">
             <label htmlFor="paragraphTwo" className="block text-lg font-medium text-gray-700 mb-2">Second Paragraph</label>
             <textarea
@@ -111,7 +111,7 @@ const AboutPageDashboard = () => {
               rows={4}
             ></textarea>
           </div>
-    
+
           <button
             type="submit"
             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -122,7 +122,7 @@ const AboutPageDashboard = () => {
         </form>
       </div>
     </div>
-    
+
     );
 };
 

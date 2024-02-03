@@ -36,7 +36,7 @@ const DesktopNavbar: React.FC = () => {
         </ul>
             </div>
 
-      <Button text='Book Jada' onClick={handleButtonClick} />
+      {/* <Button text='Book Jada' onClick={handleButtonClick} /> */}
     </nav>
   )
 }

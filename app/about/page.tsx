@@ -16,23 +16,23 @@ import { MessageData } from '../components/Context/context';
 export default function AboutPage() {
     const messageContext = useContext(MessageData);
     const { message, setMessage } = messageContext || {};
-    
+
     useEffect(() => {
-      async function fetchData(params:any) {
+      async function fetchData() {
         const response = await fetch('/api/about_page')
         const data = await response.json();
         console.log("Output",data);
-        setMessage(data.about_pages[0])  
-    
+        setMessage(data.about_pages[0])
+
       }
-    
+
       fetchData()
     },[])
     return (
       <div className="container mx-auto p-4 flex flex-col md:flex-row items-center">
           <div className="flex-1">
               <Image
-                  src="/flower.jpg" 
+                  src="/flower.jpg"
                   alt="About Us"
                   width={500}
                   height={500}
@@ -41,10 +41,10 @@ export default function AboutPage() {
           </div>
           <div className="flex-1 p-4">
               <h1 className="text-2xl font-bold mb-4">About Jada</h1>
-              
+
                   <p className="mb-2">{message?message.first_para:null}</p>
                   <p className="mb-2">{message?message.second_para:null}</p>
-              
+
           </div>
       </div>
   );
