@@ -1,0 +1,12 @@
+buildCommand: |
+  pnpm install --frozen-lockfile &&
+  pip install -r requirements.txt &&
+  pip install psycopg2 &&
+  ls &&
+  cd api &&
+  flask db upgrade &&
+  flask seed all &&
+  cd .. &&
+  pnpm run build
+
+path: "/opt/render/.local/bin:$PATH"
