@@ -9,4 +9,5 @@ buildCommand: |
   cd .. &&
   pnpm run build
 
-path: "/opt/render/.local/bin:$PATH"
+paths:
+  - .local/bin:$PATH
