@@ -2,11 +2,22 @@
 import { useContext, useEffect, useState } from "react"
 import { MessageData } from "../../components/Context/context"
 
+// const initialCertifications = [
+//   'Registered Behavorial Technician',
+//   'CPR Certified',
+//   'Certified Childcare Nanny'
+// ];
 const initialCertifications = [
-  'Registered Behavorial Technician',
-  'CPR Certified',
-  'Certified Childcare Nanny'
-];
+  {
+    cert: 'Registered Behavorial Technician'
+  },
+  {
+    cert: 'CPR Certified'
+  },
+  {
+    cert: 'Certified Childcare Nanny'
+  }
+]
 
 const AboutPageDashboard = () => {
   const messageContext = useContext(MessageData);
@@ -52,6 +63,7 @@ const AboutPageDashboard = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     // Handle the Book Jada button click
+    
     event.preventDefault();
     setSuccess(false)
     setErrors([])
@@ -120,9 +132,10 @@ const AboutPageDashboard = () => {
             <h1 className="text-4xl font-bold mb-6">Certifications:</h1>
             <button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4">Add new certification</button>
             {/* ADD BUTTON + FORM HERE */}
+            {}
             {certifications.map((certification, index) => (
               <div key={index} className="bg-white shadow-md rounded px-4 py-3">
-                <h2 className="text-xl font-semibold">{certification}</h2>
+                <h2 className="text-xl font-semibold">{certification.cert}</h2>
                 <div className="flex justify-end space-x-2 mt-2">
                   <button onClick={() => handleEdit(certification)} className="text-white bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded">Edit</button>
                   <button onClick={() => handleDelete(certification)} className="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded">Delete</button>
