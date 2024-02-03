@@ -26,16 +26,21 @@ const AboutPageDashboard = () => {
     const [editingCertification, setEditingCertification] = useState(null);
 
     const handleEdit = (certification) => {
-      //fill in
+      setEditingCertification(certification);
     };
 
-    const handleDelete = (certification) => {
-      //fill in
+    const handleDelete = (certificationTitle) => {
+      setCertifications(certifications.filter(certification => certification.cert !== certificationTitle));
     };
 
     const handleSave = (newCertification) => {
-      //fill in
-    }
+      if (editingCertification) {
+        setCertifications(certifications.map(certification => certification.cert === editingCertification.cert ? newCertification : certification));
+      } else {
+        setCertifications([...certifications, newCertification]);
+      }
+      setEditingCertification(null);
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
