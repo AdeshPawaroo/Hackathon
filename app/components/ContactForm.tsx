@@ -88,7 +88,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {nameError && <div className='inline-block text-jada-pink-950 '>{nameError}</div>}
+      {nameError && <div className=' absolute left-20 inline-block text-jada-pink-950 '>{nameError}</div>}
       <TextField
         label='Name'
         name='from_name'
@@ -96,7 +96,7 @@ const ContactForm: React.FC = () => {
         value={formData.from_name}
         onChange={handleChange}
       />
-      {emailError && <div className="text-jada-pink-950">{emailError}</div>}
+      {emailError && <div className=" absolute left-20 text-jada-pink-950 inline-block ">{emailError}</div>}
       <TextField
         label='Email'
         name='reply_to'
@@ -104,7 +104,7 @@ const ContactForm: React.FC = () => {
         value={formData.reply_to}
         onChange={handleChange}
       />
-      {messageError && <div className="text-jada-pink-950">{messageError}</div>}
+      {messageError && <div className=" absolute left-20 text-jada-pink-950 inline-block">{messageError}</div>}
       <TextAreaField
         label='Message'
         name='message'
