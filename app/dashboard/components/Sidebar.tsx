@@ -13,6 +13,7 @@ const links = [
   { href: '/dashboard/resources', label: 'Resources' },
   { href: '/dashboard/faq', label: 'FAQ' },
   { href: '/dashboard/testimonials', label: 'Testimonials' },
+  { href: '/dashboard/upload', label: 'Image & Logo Upload' },
 ];
 
 const Sidebar: React.FC = () => {
