@@ -17,11 +17,12 @@ const HeroCard: React.FC<HeroCardProps> = ({ imageUrl, imageAlt, title, subtitle
   const { message, setMessage } = messageContext || {};
 
   useEffect(() => {
-    async function fetchData(params:any) {
+    async function fetchData() {
       const response = await fetch('/api/home_page')
       const data = await response.json();
-      console.log("Output",data.home_page[0]);
-      setMessage(data.home_page[0])  
+      // console.log("Output",data.home_page[0]);
+      // @ts-ignore: Suppress the warning for the next line
+      setMessage(data.home_page[0])
 
     }
 
@@ -38,10 +39,10 @@ const HeroCard: React.FC<HeroCardProps> = ({ imageUrl, imageAlt, title, subtitle
         <h2 className="text-3xl text-gray-700">{message?message.site_subtitle:null}</h2>
         <p className="text-lg">{message?message.page_text:null}</p>
         <div className="flex gap-4">
-          <button className="bg-jada-purple text-white px-6 py-2 rounded-md font-semibold hover:bg-purple-700 transition-colors">
+          <button className="bg-jada-purple-800 text-white px-6 py-2 rounded-md font-semibold hover:bg-jada-purple-700 transition-colors">
             Action 1
           </button>
-          <button className="bg-white text-jada-purple px-6 py-2 border-2 border-jada-purple rounded-md font-semibold hover:bg-gray-100 transition-colors">
+          <button className="bg-white text-jada-purple-800 px-6 py-2 border-2 border-jada-purple-800 rounded-md font-semibold hover:bg-jada-purple-400 transition-colors">
             Action 2
           </button>
         </div>

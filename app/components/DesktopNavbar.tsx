@@ -25,7 +25,7 @@ const DesktopNavbar: React.FC = () => {
   }
 
   return (
-    <nav className='hidden md:flex md:flex-row bg-jada-cyan px-4 sm:px-6 lg:px-8 items-center md:justify-between h-20'>
+    <nav className='hidden md:flex md:flex-row bg-jada-green-500 px-4 sm:px-6 lg:px-8 items-center md:justify-between h-20 shadow-md'>
       <div className='gap-5 flex flex-row items-center'>
 
         <Logo src='/Logo-image.png' alt='logo' />

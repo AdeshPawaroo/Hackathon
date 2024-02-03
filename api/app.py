@@ -46,3 +46,7 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(port=5000)
+
+login_manager = LoginManager(app)
+login_manager.login_view = 'auth.unauthorized'
+

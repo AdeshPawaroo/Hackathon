@@ -51,7 +51,7 @@ const ContactForm: React.FC = () => {
       />
       <button
         type="submit"
-        className="bg-jada-purple hover:bg-jada-pink text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="bg-jada-purple-800 hover:bg-jada-pink-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
         Send Message
       </button>
