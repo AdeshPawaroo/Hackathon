@@ -9,7 +9,7 @@ class FAQPage(db.Model):
             __table_args__ = {'schema': SCHEMA}
 
 
-    faq_page_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(255), nullable=False)
     answer = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -17,7 +17,7 @@ class FAQPage(db.Model):
 
     def to_dict(self):
         return {
-            'faq_page_id': self.faq_page_id,
+            'id': self.id,
             'question': self.question,
             'answer': self.answer,
             'created_at': self.created_at.isoformat() if self.created_at else None

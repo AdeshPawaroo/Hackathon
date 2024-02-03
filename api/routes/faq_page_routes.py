@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify,session, request
 from models import FAQPage, db
 from forms import FAQPageForm
+from datetime import datetime
 
 faq_page_routes = Blueprint('/faq_page', __name__)
 
@@ -12,24 +13,24 @@ def get_faq_pages():
     faq_pages = FAQPage.query.all()
     return {'faq_pages': [faq_page.to_dict() for faq_page in faq_pages]}
 
-@faq_page_routes.route('/<int:faq_page_id>', methods=['GET'])
-def get_faq_page(faq_page_id):
+@faq_page_routes.route('/<int:id>', methods=['GET'])
+def get_faq_page(id):
     """
     Get an FAQ page by ID
     """
-    faq_page = FAQPage.query.get(faq_page_id)
+    faq_page = FAQPage.query.get(id)
 
     if faq_page:
         return {'faq_page': faq_page.to_dict()}
     else:
         return jsonify({'error': 'FAQ Page not found'}), 404
 
-@faq_page_routes.route('/<int:faq_page_id>', methods=['PUT'])
-def update_faq_page(faq_page_id):
+@faq_page_routes.route('/<int:id>', methods=['PUT'])
+def update_faq_page(id):
     """
     Update an FAQ page by ID
     """
-    faq_page = FAQPage.query.get(faq_page_id)
+    faq_page = FAQPage.query.get(id)
 
     if faq_page:
         data = request.get_json()
@@ -45,27 +46,32 @@ def create_faq_page():
     """
     Create a new FAQ page
     """
+    print("request",request.get_json())
     form = FAQPageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    
     if form.validate_on_submit():
         faq_page = FAQPage(
             question=form.data['question'],
-            answer=form.data['answer']
+            answer=form.data['answer'],
+            created_at=datetime.now(),
+            updated_at=datetime.now()
+
         )
 
         db.session.add(faq_page)
         db.session.commit()
         return jsonify({'message': 'FAQ Page created successfully', 'faq_page': faq_page.to_dict()}), 201
+        
 
     return jsonify({'errors': form.errors}), 400
 
-@faq_page_routes.route('/<int:faq_page_id>', methods=['DELETE'])
-def delete_faq_page(faq_page_id):
+@faq_page_routes.route('/<int:id>', methods=['DELETE'])
+def delete_faq_page(id):
     """
     Delete an FAQ page by ID
     """
-    faq_page = FAQPage.query.get(faq_page_id)
+    faq_page = FAQPage.query.get(id)
 
     if faq_page:
         db.session.delete(faq_page)

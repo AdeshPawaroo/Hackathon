@@ -30,6 +30,7 @@ export default function SignInPage() {
     formData.append("csrf_token", csrfToken);
     formData.append("email", email);
     formData.append("password", password);
+    console.log("form data",formData)
 
     try {
       const response = await fetch("/api/auth/login", {
