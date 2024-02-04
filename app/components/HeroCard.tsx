@@ -36,7 +36,7 @@ const HeroCard: React.FC<HeroCardProps> = ({ imageUrl, imageAlt, title, subtitle
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center bg-white p-8 rounded-lg shadow-lg">
       <div className="mb-4 md:mb-0">
-        <Image src='/flower.jpg' alt={imageAlt} width={500} height={300} className="rounded-lg" />
+        <Image src='/jada.png' alt={imageAlt} width={500} height={300} className="rounded-lg" />
       </div>
       <div className="space-y-4">
         <h1 className="text-5xl font-bold">{message?.site_title}</h1>

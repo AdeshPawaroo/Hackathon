@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { FaUpload, FaFileUpload } from 'react-icons/fa';
+import { FaUpload, FaFileUpload, FaCloudUploadAlt } from 'react-icons/fa';
 
 type ImageUploadProps = {
   label: string;
@@ -47,19 +47,26 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ label, currentImage }) => {
 
       {file ? (
         <>
-          <p className="text-jada-blue-600">{fileName}</p>
+          <p 
+      className="text-jada-blue-900 font-semibold text-lg bg-white p-2 rounded-md"
+      aria-label={`Selected file: ${fileName}`}
+    >
+      {fileName}
+    </p>
           <button
             onClick={handleUpload}
-            className="flex items-center justify-center px-4 py-2 text-white bg-jada-purple-600 hover:bg-jada-purple-700 rounded-md"
+            className="group relative w-full flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-jada-green-500"
+            aria-label={fileName ? `Upload file named ${fileName}` : 'Upload file'}
           >
-            <FaUpload className="mr-2" />
+            <FaCloudUploadAlt className="mr-2" />
             Upload
           </button>
         </>
       ) : (
         <button
           onClick={triggerFileInput}
-          className="flex items-center justify-center px-4 py-2 text-white bg-jada-blue-600 hover:bg-jada-blue-700 rounded-md"
+          className="group relative w-full flex items-center justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          aria-label="Choose file to upload"
         >
           <FaFileUpload className="mr-2" />
           Choose File
