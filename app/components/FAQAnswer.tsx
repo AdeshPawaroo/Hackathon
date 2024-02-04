@@ -1,4 +1,3 @@
-// components/FAQAnswer.tsx
 import React from 'react';
 
 const FAQAnswer = ({ answer }) => {

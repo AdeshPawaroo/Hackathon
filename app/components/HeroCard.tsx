@@ -20,12 +20,8 @@ const HeroCard: React.FC<HeroCardProps> = ({ imageUrl, imageAlt, title, subtitle
     async function fetchData() {
       const response = await fetch('/api/home_page')
       const data = await response.json();
-      // console.log("Output",data.home_page[0]);
-      // @ts-ignore: Suppress the warning for the next line
       setMessage(data.home_page[0])
-
     }
-
     fetchData()
   },[])
 
