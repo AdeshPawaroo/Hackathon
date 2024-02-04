@@ -25,7 +25,7 @@ import React, { useEffect, useRef } from 'react';
 
 const BookingPage: React.FC = () => {
     const scriptContainerRef = useRef<HTMLDivElement>(null);
-
+   
     useEffect(() => {
         // Create the script element
         const script = document.createElement('script');
@@ -47,6 +47,7 @@ const BookingPage: React.FC = () => {
     }, []);
 
     return (
+        
         <div className="container mx-auto p-4" ref={scriptContainerRef}>
             {/* The script will be injected into this div */}
         </div>

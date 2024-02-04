@@ -6,12 +6,14 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/dashboard', label: 'Home Page' },
-  { href: '/dashboard/about', label: 'About' },
-  { href: '/dashboard/contact', label: 'Contact' },
-  { href: '/dashboard/services', label: 'Services' },
-  { href: '/dashboard/resources', label: 'Resources' },
-  { href: '/dashboard/faq', label: 'FAQ' },
-  { href: '/dashboard/testimonials', label: 'Testimonials' },
+  { href: '/dashboard/about', label: 'About Page' },
+  { href: '/dashboard/contact', label: 'Contact Page' },
+  { href: '/dashboard/services', label: 'Services Page' },
+  { href: '/dashboard/resources', label: 'Resources Page' },
+  { href: '/dashboard/faq', label: 'FAQ Page' },
+  { href: '/dashboard/testimonials', label: 'Testimonials Page' },
+  { href: '/dashboard/upload', label: 'Image & Logo Upload' },
+  { href: '/dashboard/profile', label: 'Change Email / Password' },
 ];
 
 const Sidebar: React.FC = () => {

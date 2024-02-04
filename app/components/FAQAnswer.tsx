@@ -1,6 +1,10 @@
 import React from 'react';
 
-const FAQAnswer = ({ answer }) => {
+type FAQAnswerProps = {
+  answer: string;
+};
+
+const FAQAnswer: React.FC<FAQAnswerProps> = ({ answer }) => {
   return <p>{answer}</p>;
 };
 

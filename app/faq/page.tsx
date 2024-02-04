@@ -1,8 +1,18 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import FAQQuestion from '../components/FAQQuestion';
 import FAQAnswer from '../components/FAQAnswer';
+import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
-const faqs = [
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+
+
+const faqs: FAQItem[] =  [
     {
       question: "Will you use your phone while caring for my child?",
       answer: "Absolutely not! I prioritize your child's care and only use my phone for emergencies. Ensuring your child's safety and engagement is my top priority."
@@ -41,19 +51,40 @@ const faqs = [
     }
   ];
   
-
-export default function FAQPage() {
+  const FAQItem: React.FC<{faq: FAQ}> = ({ faq }) => {
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const toggleOpen = () => setIsOpen(!isOpen);
+  
+    return (
+      <div className="mb-4">
+        <div 
+          className="cursor-pointer font-bold py-2 px-6 bg-gray-100 hover:bg-jada-blue-400 transition duration-300 ease-in-out rounded-lg flex justify-between items-center"
+          onClick={toggleOpen}
+          onKeyDown={(e) => e.key === 'Enter' && toggleOpen()}
+          role="button"
+          tabIndex={0}
+          aria-expanded={isOpen}
+        >
+          <FAQQuestion question={faq.question} />
+          {isOpen ? <MdExpandLess /> : <MdExpandMore />} {/* Icon indicating state */}
+        </div>
+        {isOpen && <div className="px-6 py-2 border rounded-b"><FAQAnswer answer={faq.answer} /></div>}
+      </div>
+    );
+  };
+  
+  const FAQPage: React.FC = () => {
     return (
       <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h1>
-      <div>
+        <h1 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h1>
+        <div className="max-w-2xl mx-auto">
           {faqs.map((faq, index) => (
-              <div key={index} className="mb-6">
-                  <FAQQuestion question={faq.question} />
-                  <FAQAnswer answer={faq.answer} />
-              </div>
+            <FAQItem key={index} faq={faq} />
           ))}
+        </div>
       </div>
-  </div>
     );
-}
+  };
+  
+  export default FAQPage;

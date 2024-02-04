@@ -1,6 +1,11 @@
 import React from 'react';
 
-const FAQQuestion = ({ question }) => {
+type FAQQuestionProps = {
+  question: string;
+};
+
+
+const FAQQuestion: React.FC<FAQQuestionProps> = ({ question }) => {
   return <h2 className="text-xl font-semibold mb-2">{question}</h2>;
 };
 
