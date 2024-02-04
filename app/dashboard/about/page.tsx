@@ -54,7 +54,6 @@ const AboutPageDashboard = () => {
     async function fetchData(params:any) {
       const response = await fetch('/api/about_page')
       const data = await response.json();
-      console.log("Output",data);
       setMessage(data.about_pages[0])  
   
     }
@@ -80,7 +79,6 @@ const AboutPageDashboard = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setSuccess(true)
 
       } else {
@@ -92,7 +90,6 @@ const AboutPageDashboard = () => {
     }
 
   }
-  console.log("Message", message)
 
   const changeValues = (e) => {
     const updatedMessage = {

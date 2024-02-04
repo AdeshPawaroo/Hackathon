@@ -48,15 +48,14 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="container mx-auto p-4 flex flex-col md:flex-row">
-      
-        <div className="flex-1 p-4">
-          <h1 className="text-2xl font-bold mb-4 text-center">Our Services</h1>
-          {services.map((service, index) => (
-            <div key={index} className="mb-4">
-              <h2 className="text-xl font-semibold">{service.title}</h2>
-              <p>{service.description}</p>
-            </div>
-          ))}
+      <div className="flex-1 p-4">
+        <h1 className="text-2xl font-bold mb-4 text-center">Our Services</h1>
+        {services.map((service, index) => (
+          <div key={index} className="mb-4">
+            <h2 className="text-xl font-semibold">{service.title}</h2>
+            <p>{service.description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
