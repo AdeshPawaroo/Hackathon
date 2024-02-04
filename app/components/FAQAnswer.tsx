@@ -1,4 +1,3 @@
-// components/FAQAnswer.tsx
 import React from 'react';
 
 type FAQAnswerProps = {

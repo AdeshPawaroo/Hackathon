@@ -19,7 +19,6 @@
  * with React's rendering and to allow for proper cleanup on component unmount.
  */
 
-
 'use client';
 
 import React, { useEffect, useRef } from 'react';

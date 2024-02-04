@@ -1,5 +1,3 @@
-// MobileNavbar.tsx
-
 import React, { useState, useEffect } from 'react'
 import Logo from './Logo'
 import MenuItem from './MenuItem'

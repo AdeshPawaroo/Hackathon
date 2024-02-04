@@ -34,21 +34,20 @@ export default function ResourcesPage() {
     <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold text-center mb-8">Resources for Parents</h1>
         <ul>
-            {resources.map((resource, index) => (
-                <li key={index} className="mb-6">
-                    <h2 className="text-xl font-semibold mb-2">
-                        <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                            {resource.title}
-                            
-                        </a>
-                    </h2>
-                    <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 visited:text-purple-600">
-                        {resource.url} <FaExternalLinkAlt className="inline-block ml-1 mb-1" />
-                    </a>
-                    <p className="mt-2">{resource.description}</p>
-                </li>
+          {resources.map((resource, index) => (
+            <li key={index} className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">
+                <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                  {resource.title}       
+                </a>
+              </h2>
+              <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 visited:text-purple-600">
+                {resource.url} <FaExternalLinkAlt className="inline-block ml-1 mb-1" />
+              </a>
+              <p className="mt-2">{resource.description}</p>
+            </li>
             ))}
         </ul>
     </div>
-);
+  );
 }

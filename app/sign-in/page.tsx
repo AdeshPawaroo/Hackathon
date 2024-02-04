@@ -40,7 +40,6 @@ export default function SignInPage() {
       if (response.ok) {
         const data = await response.json();
         router.push('/dashboard')
-        console.log(data);
 
       } else {
         const errorData = await response.json();
