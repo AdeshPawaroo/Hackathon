@@ -1,3 +1,4 @@
+├── .DS_Store
 ├── .flaskenv
 ├── .gitignore
 ├── Pipfile
@@ -18,6 +19,15 @@
 │   │   ├── service_form_page.py
 │   │   ├── signup_form.py
 │   │   └── testimonial_form_page.py
+│   ├── instance
+│   │   └── dev.db
+│   ├── migrations
+│   │   ├── README
+│   │   ├── alembic.ini
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 8a4c8ccc7e9f_.py
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── about_page.py
@@ -57,10 +67,6 @@
 │   ├── about
 │   │   └── page.tsx
 │   ├── booking
-│   │   ├── availabilty
-│   │   │   └── page.tsx
-│   │   ├── details
-│   │   │   └── page.tsx
 │   │   └── page.tsx
 │   ├── components
 │   │   ├── AdminNavbar.tsx
@@ -86,7 +92,9 @@
 │   │   ├── about
 │   │   │   └── page.tsx
 │   │   ├── components
+│   │   │   ├── CertificationForm.tsx
 │   │   │   ├── FAQForm.tsx
+│   │   │   ├── ImageUpload.tsx
 │   │   │   ├── ResourceForm.tsx
 │   │   │   ├── ServiceForm.tsx
 │   │   │   ├── Sidebar.tsx
@@ -98,11 +106,15 @@
 │   │   │   └── page.tsx
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
+│   │   ├── profile
+│   │   │   └── page.tsx
 │   │   ├── resources
 │   │   │   └── page.tsx
 │   │   ├── services
 │   │   │   └── page.tsx
-│   │   └── testimonials
+│   │   ├── testimonials
+│   │   │   └── page.tsx
+│   │   └── upload
 │   │       └── page.tsx
 │   ├── faq
 │   │   └── page.tsx
@@ -128,6 +140,7 @@
 ├── public
 │   ├── Logo-image.png
 │   ├── flower.jpg
+│   ├── jada.jpg
 │   ├── logo.png
 │   ├── next.svg
 │   └── vercel.svg
