@@ -40,7 +40,6 @@ export default function SignInPage() {
       if (response.ok) {
         const data = await response.json();
         router.push('/dashboard')
-        console.log(data);
 
       } else {
         const errorData = await response.json();
@@ -60,7 +59,7 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-jada-cyan">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-jada-green-500">
       <div className="w-full max-w-xs">
         <ul>
           {errors.map((error, idx) => (
@@ -99,12 +98,12 @@ export default function SignInPage() {
           <Button
               text="Sign In"
 
-              additionalClasses="bg-jada-purple hover:bg-jada-pink text-white"
+              additionalClasses="bg-jada-purple-800 hover:bg-jada-pink text-white"
             />
             <Button
               text="Cancel"
               onClick={handleCancel}
-              additionalClasses="text-jada-pink border border-jada-pink bg-white hover:bg-jada-pink hover:text-white"
+              additionalClasses="text-jada-pink-500 border border-jada-pink bg-white hover:bg-jada-pink hover:text-white"
             />
           </div>
         </form>

@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from models import HomePage, db
+from forms import HomePageForm
 
 home_page_routes = Blueprint('/home_page', __name__)
 
@@ -29,3 +30,28 @@ def update_home_page(home_page_id):
         return jsonify({'message': 'Home Page updated successfully'}), 200
     else:
         return jsonify({'error': 'Home Page not found'}), 404
+    
+
+@home_page_routes.route('/', methods=['POST'])
+def create_home_page():
+    """
+    Create a new home page
+    """
+    form = HomePageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    print(request.get_json())
+    if form.validate_on_submit():
+        home_page = HomePage(
+            site_title=form.data['site_title'],
+            site_subtitle=form.data['site_subtitle'],
+            page_text=form.data['page_text'],
+            
+        )
+
+        db.session.add(home_page)
+        db.session.commit()
+        print(home_page)
+        return jsonify({'message': 'Home Page created successfully', 'home_page': home_page.to_dict()}), 201
+
+    return jsonify({'errors': form.errors}), 400

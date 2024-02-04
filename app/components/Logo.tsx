@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface LogoProps {
   src: string
@@ -8,7 +9,11 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = () => {
-  return <Image src={'/logo.png'} alt={'logo'} height={50} width={50} />
+
+  return (
+    <Link href="/">
+      <Image src={'/logo.png'} alt={'logo'} height={50} width={50} />
+    </Link>)
 }
 
 export default Logo

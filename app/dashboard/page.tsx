@@ -1,7 +1,5 @@
 "use client"
-import Login from "../components/Login"
-import SignUp from "../components/SignUp"
-import { useContext, useEffect, useState } from "react"
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react"
 import { MessageData } from "../components/Context/context"
 import Button from "../components/Button"
 export default function DashboardPage() {
@@ -9,79 +7,108 @@ export default function DashboardPage() {
 
   // Accessing message and setMessage from context
   const { message, setMessage } = messageContext || {};
+  const [errors, setErrors] = useState([]);
+  const [success, setSuccess] = useState(false)
+
   useEffect(() => {
-    async function fetchData(params:any) {
+    async function fetchData() {
       const response = await fetch('/api/home_page')
       const data = await response.json();
-      console.log("Output",data.home_page[0]);
-      setMessage(data.home_page[0])  
-
+      setMessage(data.home_page[0])
     }
 
     fetchData()
-  },[])
-  const handleButtonClick = () => {
+  }, [])
+  const handleSubmit = async (event: React.FormEvent) => {
     // Handle the Book Jada button click
-    alert('Information Submitted') // Replace with your actual click handling logic
-  }
-  console.log("Message",message)
+    event.preventDefault();
+    setSuccess(false)
+    setErrors([])
+    const formData = {};
 
-  const changeValues = (e) => {
+    try {
+      const response = await fetch("/api/home_page/1", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json", // Set the content type to JSON
+        },
+        body: JSON.stringify({ ...message }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setSuccess(true)
+
+      } else {
+        const errorData = await response.json();
+        setErrors(errorData.errors);
+      }
+    } catch (error) {
+      console.error("An error occurred during signup:", error);
+    }
+
+  }
+
+  const changeValues = (e : ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const updatedMessage = {
       ...message,
-    [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     };
+    // @ts-ignore: Suppress the warning for the next line
     setMessage(updatedMessage);
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <div className="w-64 bg-white shadow-md">
-        <nav className="flex flex-col p-4">
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Home</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">About</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Services</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Resources</a>
-          <a href="#" className="py-2 text-gray-700 hover:text-gray-900">Testimonials</a>
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-10">
-        <h1 className="text-4xl font-bold mb-6">Dashboard</h1>
-        <div className="space-y-6">
-          <div>
-            <label htmlFor="siteTitle" className="block text-lg font-medium text-gray-700">Site Title</label>
-            <input name="site_title" value={message?message.site_title:null} onChange={changeValues} type="text" id="siteTitle" className="mt-1 block w-full border-gray-300 shadow-sm rounded-md" placeholder="Jada Last-Name" />
-          </div>
-          <div>
-            <label htmlFor="siteSubtitle" className="block text-lg font-medium text-gray-700">Site Subtitle</label>
-            <input name="site_subtitle" value={message?message.site_subtitle:null} onChange={changeValues} type="text" id="siteSubtitle" className="mt-1 block w-full border-gray-300 shadow-sm rounded-md" placeholder="A Great Nanny" />
-          </div>
-          <div>
-            <label htmlFor="homePageText" className="block text-lg font-medium text-gray-700">Home Page Text</label>
-            <textarea name="page_text" value={message?message.page_text:null} onChange={changeValues} id="homePageText" rows={4} className="mt-1 block w-full border-gray-300 shadow-sm rounded-md" placeholder="Lorem ipsum"></textarea>
-          </div>
-          <div>
-          <Button text='Submit' onClick={handleButtonClick} />
-          </div>
-        </div>
-      </div>
+    <div className="flex h-screen bg-gray-100 p-10">
+      <div className="max-w-3xl w-full space-y-8">
+        <h1 className="text-4xl font-bold mb-6">Home Page</h1>
+        <form onSubmit={handleSubmit} className="space-y-6 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div>
+      <label htmlFor="siteTitle" className="block text-lg font-medium text-gray-700">Site Title</label>
+      <input
+        name="site_title"
+        value={message ? message.site_title : null}
+        onChange={changeValues}
+        type="text"
+        id="siteTitle"
+        className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Jada Last-Name"
+      />
     </div>
+    <div>
+      <label htmlFor="siteSubtitle" className="block text-lg font-medium text-gray-700">Site Subtitle</label>
+      <input
+        name="site_subtitle"
+        value={message ? message.site_subtitle : null}
+        onChange={changeValues}
+        type="text"
+        id="siteSubtitle"
+        className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="A Great Nanny"
+      />
+    </div>
+    <div>
+      <label htmlFor="homePageText" className="block text-lg font-medium text-gray-700">Home Page Text</label>
+      <textarea
+        name="page_text"
+        value={message ? message.page_text : null}
+        onChange={changeValues}
+        id="homePageText"
+        rows={4}
+        className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Lorem ipsum"
+      ></textarea>
+    </div>
+    <button
+      type="submit"
+      className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
+      Submit
+    </button>
+    {success && <p className="text-green-600 font-bold">Hero Card updated successfully</p>}
+  </form>
+  </div>
+</div>
+
   );
 }
-
-// const page = () => {
-
-//     const [user, setUser] = useState()
-
-//     return (
-//         <div className="flex flex-col gap-8">dashboard page
-//             {/* {!user ? <SignUp /> : <Page />} */}
-//             <Login />
-//         </div>
-//     )
-// }
-
-// export default page
