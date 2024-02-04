@@ -29,7 +29,7 @@ export default function AboutPage() {
   },[])
 
   return (
-    <div className="container mx-auto p-4 flex flex-col md:flex-row items-center">
+    <div className="container mx-auto p-4 flex flex-col md:flex-row items-center text-center">
       <div className="flex-1">
         <Image
           src="/flower.jpg" 
@@ -42,8 +42,11 @@ export default function AboutPage() {
 
       <div className="flex-1 p-4">
         <h1 className="text-2xl font-bold mb-4">About Jada</h1>
+        {aboutParagraphs.map((paragraph, index) => (
+          <p key={index} className='mb-2'>{paragraph}</p>
+        ))}
         <p className="mb-2">{message?message.first_para:null}</p>
-        <p className="mb-2">{message?message.second_para:null}</p>s
+        <p className="mb-2">{message?message.second_para:null}</p>
       </div>
 
       <div className="flex-1 p-4">
