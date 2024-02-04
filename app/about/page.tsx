@@ -1,7 +1,6 @@
 'use client'
-import React from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import Image from 'next/image';
-import { useContext, useEffect, useState } from "react"
 import { MessageData } from '../components/Context/context';
 
 const aboutParagraphs = [
@@ -18,43 +17,34 @@ const certifications = [
 export default function AboutPage() {
   const messageContext = useContext(MessageData);
   const { message, setMessage } = messageContext || {};
-    
+
   useEffect(() => {
-    async function fetchData(params:any) {
+    async function fetchData() {
       const response = await fetch('/api/about_page')
       const data = await response.json();
-      setMessage(data.about_pages[0])  
+      setMessage(data.about_pages[0]);
     }
-    fetchData()
-  },[])
+    fetchData();
+  }, []);
 
   return (
-    <div className="container mx-auto p-4 flex flex-col md:flex-row items-center text-center">
-      <div className="flex-1">
-        <Image
-          src="/flower.jpg" 
-          alt="About Us"
-          width={500}
-          height={500}
-          layout="responsive"
-        />
-      </div>
+    <div className="container mx-auto p-8">
+  <div className="max-w-2xl mx-auto">
 
-      <div className="flex-1 p-4">
-        <h1 className="text-2xl font-bold mb-4">About Jada</h1>
-        {aboutParagraphs.map((paragraph, index) => (
-          <p key={index} className='mb-2'>{paragraph}</p>
-        ))}
-        <p className="mb-2">{message?message.first_para:null}</p>
-        <p className="mb-2">{message?message.second_para:null}</p>
-      </div>
+    <h2 className="text-2xl font-bold mb-4 text-center">Certifications</h2>
+    <ul className="list-disc list-inside text-lg mb-6 text-center mb-20">
+      {certifications.map((cert, index) => (
+        <li key={index}>{cert}</li>
+      ))}
+    </ul>
 
-      <div className="flex-1 p-4">
-        <h1 className="text-2xl font-bold mb-4">Certifications</h1>
-        {certifications.map((cert, index) => (
-          <p key={index} className="mb-2">{cert}</p>
-        ))}
-      </div>
-    </div>
+    <h1 className="text-4xl font-bold mb-6 text-center">About Jada</h1>
+    <p className="mb-4 text-lg leading-relaxed">{message?.first_para}</p>
+    <p className="mb-4 text-lg leading-relaxed">{message?.second_para}</p>
+    {/* Add additional paragraphs as needed */}
+    
+  </div>
+</div>
+
   );
 }
