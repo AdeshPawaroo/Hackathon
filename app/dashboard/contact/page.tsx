@@ -8,8 +8,6 @@ const DashboardContactPage = () => {
     event.preventDefault();
     // Handle the form submission logic here
     // For example, sending the email address to the server
-    console.log('Email to be saved:', email);
-
     // Implement your API call to save the email address
   };
 

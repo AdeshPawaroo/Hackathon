@@ -1,21 +1,24 @@
-
 'use client'
 import React from 'react';
 import SidebarItem from './SidebarItem';
 import Button from '../../components/Button';
-import { useRouter} from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/dashboard', label: 'Home Page' },
-  { href: '/dashboard/about', label: 'About' },
-  { href: '/dashboard/contact', label: 'Contact' },
-  { href: '/dashboard/services', label: 'Services' },
-  { href: '/dashboard/resources', label: 'Resources' },
-  { href: '/dashboard/faq', label: 'FAQ' },
-  { href: '/dashboard/testimonials', label: 'Testimonials' },
+  { href: '/dashboard/about', label: 'About Page' },
+  { href: '/dashboard/contact', label: 'Contact Page' },
+  { href: '/dashboard/services', label: 'Services Page' },
+  { href: '/dashboard/resources', label: 'Resources Page' },
+  { href: '/dashboard/faq', label: 'FAQ Page' },
+  { href: '/dashboard/testimonials', label: 'Testimonials Page' },
+  { href: '/dashboard/upload', label: 'Image & Logo Upload' },
+  { href: '/dashboard/profile', label: 'Change Email / Password' },
 ];
 
 const Sidebar: React.FC = () => {
+  const pathname = usePathname();
+
   const handleSignOut = async () => {
    
   };
@@ -25,7 +28,7 @@ const Sidebar: React.FC = () => {
     <div className="flex flex-col w-64 bg-white shadow-md h-screen">
       <nav className="flex-1 p-4 overflow-y-auto">
         {links.map((link, index) => (
-          <SidebarItem key={index} href={link.href} label={link.label} />
+          <SidebarItem key={index} href={link.href} label={link.label} isActive={pathname === link.href} />
         ))}
       </nav>
       {/* Spacer to push the sign-out button to the bottom */}

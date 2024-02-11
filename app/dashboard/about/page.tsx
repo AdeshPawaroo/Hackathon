@@ -1,10 +1,50 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
 import { MessageData } from "../../components/Context/context"
+import CertificationForm from '../components/CertificationForm';
+
+const initialCertifications = [
+  {
+    cert: 'Registered Behavorial Technician'
+  },
+  {
+    cert: 'CPR Certified'
+  },
+  {
+    cert: 'Certified Childcare Nanny'
+  }
+];
 
 const AboutPageDashboard = () => {
   const messageContext = useContext(MessageData);
 
+    const [certifications, setCertifications] = useState(initialCertifications);
+    const [editingCertification, setEditingCertification] = useState(null);
+
+    const handleEdit = (certification) => {
+      setEditingCertification(certification);
+    };
+
+    const handleDelete = (certificationTitle) => {
+      setCertifications(certifications.filter(certification => certification.cert !== certificationTitle));
+    };
+
+    const handleSave = (newCertification) => {
+      if (editingCertification) {
+        setCertifications(certifications.map(certification => certification.cert === editingCertification.cert ? newCertification : certification));
+      } else {
+        setCertifications([...certifications, newCertification]);
+      }
+      setEditingCertification(null);
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
   // Accessing message and setMessage from context
   const { message, setMessage } = messageContext || {};
   const [errors, setErrors] = useState([]);
@@ -15,6 +55,8 @@ const AboutPageDashboard = () => {
       const response = await fetch('/api/about_page')
       const data = await response.json();
       console.log("Output",data);
+     
+
       setMessage(data.about_pages[0])
 
     }
@@ -40,7 +82,6 @@ const AboutPageDashboard = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setSuccess(true)
 
       } else {
@@ -52,7 +93,6 @@ const AboutPageDashboard = () => {
     }
 
   }
-  console.log("Message", message)
 
   const changeValues = (e) => {
     const updatedMessage = {
