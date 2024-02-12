@@ -19,7 +19,7 @@ export default function AboutPage() {
     const { message, setMessage } = messageContext || {};
 
     useEffect(() => {
-      async function fetchData(params:any) {
+      async function fetchData() {
         const response = await fetch('/api/about_page')
         const data = await response.json();
         console.log("Output",data);
