@@ -6,7 +6,7 @@ class ResourcePage(db.Model):
     __tablename__ = 'resource_pages'
 
     if environment == "production":
-            __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
 
     resource_page_id = db.Column(db.Integer, primary_key=True)

@@ -6,7 +6,7 @@ class ServicePage(db.Model):
     __tablename__ = 'service_pages'
 
     if environment == "production":
-            __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
 
     service_page_id = db.Column(db.Integer, primary_key=True)

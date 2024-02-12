@@ -6,7 +6,7 @@ class FAQPage(db.Model):
     __tablename__ = 'faq_pages'
 
     if environment == "production":
-            __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
 
     faq_page_id = db.Column(db.Integer, primary_key=True)

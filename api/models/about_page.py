@@ -6,7 +6,7 @@ class AboutPage(db.Model):
     __tablename__ = 'about_pages'
 
     if environment == "production":
-            __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
 
     about_page_id = db.Column(db.Integer, primary_key=True)

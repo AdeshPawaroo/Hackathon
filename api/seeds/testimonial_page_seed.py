@@ -37,8 +37,8 @@ def seed_testimonials():
 # it will reset the primary keys for you as well.
 def undo_testimonials():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.testimonials RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.testimonial_pages RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM testimonials"))
+        db.session.execute(text("DELETE FROM testimonial_pages"))
 
     db.session.commit()

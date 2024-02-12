@@ -6,7 +6,7 @@ class ContactPage(db.Model):
     __tablename__ = 'contact_pages'
 
     if environment == "production":
-            __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
 
     contact_page_id = db.Column(db.Integer, primary_key=True)

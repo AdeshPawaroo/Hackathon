@@ -6,7 +6,7 @@ class Booking(db.Model):
     __tablename__ = 'bookings'
 
     if environment == "production":
-            __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
 
     booking_id = db.Column(db.Integer, primary_key=True)
