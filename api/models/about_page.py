@@ -10,8 +10,8 @@ class AboutPage(db.Model):
 
 
     about_page_id = db.Column(db.Integer, primary_key=True)
-    first_para = db.Column(db.String(255), nullable=False)
-    second_para = db.Column(db.String(255), nullable=False)
+    first_para = db.Column(db.String(10000), nullable=False)
+    second_para = db.Column(db.String(10000), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
